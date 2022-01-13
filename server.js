@@ -1,6 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
-const foodRouter = require('./routes/food')
+const foodRouter = require('./routes/foods')
 const app = express()
 
 mongoose.connect('mongodb://localhost/FoodGo')
@@ -8,6 +8,7 @@ mongoose.connect('mongodb://localhost/FoodGo')
 app.set('view engine', 'ejs')
 
 app.use('/foods', foodRouter)
+app.use(express.urlencoded({ extended: false }))
 
 app.get('/', (req, res) => {
     const foods = [{
