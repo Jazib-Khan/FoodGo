@@ -9,7 +9,7 @@ app.use('/food', foodRouter)
 app.get('/', (req, res) => {
     const foods = [{
         title: 'Test Food',
-        createdAt: Date.now(),
+        createdAt: new Date(),
         description: 'Test description'
     }]
     res.render('index', { foods: foods })

@@ -17,7 +17,13 @@
 
         <% foods.forEach(food => { %>
             <div class="card mt-4">
-                <%= food.title %> 
+                <div class="card-body">
+                    <h4 class="card-title"><%= food.title %></h4>
+                    <div class="card-subtitle text-muted mb-2">
+                        <%= food.createdAt.toLocaleDateString() %>
+                    </div>
+                </div>
+                
             </div>
         <% }) %>
     </div>
