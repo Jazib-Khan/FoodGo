@@ -1,8 +1,18 @@
 const express = require('express')
+const foodRouter = require('./routes/food')
 const app = express()
 
+app.set('view engine', 'ejs')
+
+app.use('/food', foodRouter)
+
 app.get('/', (req, res) => {
-    res.send('Hello World')
+    const foods = [{
+        title: 'Test Article',
+        createdAt: Date.now(),
+        description: 'Test description'
+    }]
+    res.render('index', { foods: foods })
 })
 
 app.listen(5000)
