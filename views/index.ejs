@@ -13,6 +13,13 @@
 <body>
     <div class="container">
         <h1 class="mb-4">Food Selection</h1>
+        <a href="/foods/new" class="btn btn-success">New Food Item</a>
+
+        <% foods.forEach(food => { %>
+            <div class="card mt-4">
+                <%= food.title %> 
+            </div>
+        <% }) %>
     </div>
 </body>
 </html>
