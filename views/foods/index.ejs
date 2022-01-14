@@ -25,6 +25,8 @@
                     <div class="card-text mb-2"><%= food.description %></div>
                     <a href="foods/<%= food.slug %>" 
                     class="btn btn-primary">Read More</a>
+                    <a href="foods/edit/<%= food.id %>" 
+                        class="btn btn-info">Edit</a>
                     <form action="/foods/<%= food.id %>?_method=DELETE"
                     method="POST" class="d-inline">
                         <button type="submit" class="btn btn-danger">Delete</button>
