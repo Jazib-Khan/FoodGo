@@ -3,24 +3,27 @@ const Food = require('./../models/food')
 const router = express.Router()
 
 router.get('/new', (req, res) => {
-    res.render('foods/new')
+    res.render('foods/new', { food: new Food() })
 })
 
-router.get('/:id', (req, res) => {
-
+router.get('/:id', async (req, res) => {
+    const food = await Food.findById(req.params.id)
+    if (food == null) res.redirect('/')
+    res.render('foods/show', { food: food })
 })
 
 router.post('/', async (req, res) => {
-    const food = new Food({
+    let food = new Food({
         title: req.body.title,
         description: req.body.description,
         markdown: req.body.markdown
     })
     try {
         food = await food.save()
-        res.redirect('/foods/${food.id}')
+        res.redirect(`/foods/${food.id}`)
     } catch (e) {
-        res.render('foods/new', { food: food})
+        console.log(e)
+        res.render(`foods/new`, { food: food})
     }  
 })
 

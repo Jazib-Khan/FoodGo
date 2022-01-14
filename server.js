@@ -1,5 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const Food = require('./models/food')
 const foodRouter = require('./routes/foods')
 const app = express()
 
@@ -7,16 +8,14 @@ mongoose.connect('mongodb://localhost/FoodGo')
 
 app.set('view engine', 'ejs')
 
-app.use('/foods', foodRouter)
 app.use(express.urlencoded({ extended: false }))
 
-app.get('/', (req, res) => {
-    const foods = [{
-        title: 'Test Food',
-        createdAt: new Date(),
-        description: 'Test description'
-    }]
+app.get('/', async (req, res) => {
+    const foods = await Food.find().sort({
+    createdAt: 'desc' })
     res.render('foods/index', { foods: foods })
 })
+
+app.use('/foods', foodRouter)
 
 app.listen(5000)
