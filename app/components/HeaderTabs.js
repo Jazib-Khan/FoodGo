@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity} from 'react-native';
 
 export default function HeaderTabs() {
     return (
-        <View>
+        <View style={{flexDirection: "row", alignSelf: "center" }}>
             <HeaderButton text="Delivery"/>
             <HeaderButton text="Pickup"/>
         </View>
@@ -11,9 +11,12 @@ export default function HeaderTabs() {
 }
 
 const HeaderButton = (props) => (
-    <View>
-        <TouchableOpacity>
-            <Text>{props.text}</Text>
-        </TouchableOpacity>
-    </View>
+    <TouchableOpacity style={{
+        backgroundColor: "black",
+        paddingVertical: 6,
+        paddingHorizontal: 16,
+        borderRadius: 30,
+    }}>
+        <Text style={{ color: "white"}}>{props.text}</Text>
+    </TouchableOpacity>
 );
