@@ -51,7 +51,7 @@ export default function Categories() {
                             resizeMode: "contain",
                         }} 
                     />
-                    <Text style={{ fontSize: 13, fontWeight: "900"}}>
+                    <Text style={{ fontSize: 13, fontWeight: "bold"}}>
                         {item.text}
                     </Text>
                 </View>
