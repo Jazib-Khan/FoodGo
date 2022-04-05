@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { View, Text, SafeAreaView, ScrollView} from 'react-native';
+import { Divider } from 'react-native-elements';
+import BottomTabs from '../components/BottomTabs';
 import Categories from '../components/Categories';
 import HeaderTabs from '../components/HeaderTabs';
 import RestaurantItems, { localRestaurants } from '../components/RestaurantItems';
@@ -45,9 +47,10 @@ export default function Home() {
             </View>
             <ScrollView showsVerticalScrollIndicator={false}>
                 <Categories />
-                <RestaurantItems 
-                restaurantData={restaurantData} />
+                <RestaurantItems restaurantData={restaurantData} />
             </ScrollView>
+            <Divider width={1}/>
+            <BottomTabs />
         </SafeAreaView>
     );
 }
