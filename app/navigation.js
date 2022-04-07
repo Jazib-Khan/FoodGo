@@ -1,8 +1,8 @@
 import React from "react";
 import { createStackNavigator  } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
-import Home from "./screens/home";
-import restaurantDetail from "./screens/RestaurantDetail";
+import Home from "./screens/Home";
+import RestaurantDetail from "./screens/RestaurantDetail";
 
 export default function RootNavigation() {
     const Stack = createStackNavigator();
@@ -15,8 +15,8 @@ export default function RootNavigation() {
         <NavigationContainer>
             <Stack.Navigator initalRouteName="Home" screenOptions={screenOptions}>
                 <Stack.Screen name="Home" component={Home}/>
-                <Stack.Screen name="RestaurantDetail" component={restaurantDetail} />
+                <Stack.Screen name="RestaurantDetail" component={RestaurantDetail} />
             </Stack.Navigator>
         </NavigationContainer>
-    )
+    );
 }

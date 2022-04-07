@@ -41,7 +41,7 @@ export default function MenuItems() {
                     <Divider 
                         width={0.5} 
                         orientation='vertical' 
-                        style={{marginHorizontal: 20 }} 
+                        style={{ marginHorizontal: 20 }} 
                     />
                 </View>
             ))}

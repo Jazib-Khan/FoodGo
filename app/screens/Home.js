@@ -47,7 +47,10 @@ export default function Home({ navigation }) {
             </View>
             <ScrollView showsVerticalScrollIndicator={false}>
                 <Categories />
-                <RestaurantItems restaurantData={restaurantData} navigation={navigation} />
+                <RestaurantItems 
+                    restaurantData={restaurantData} 
+                    navigation={navigation} 
+                />
             </ScrollView>
             <Divider width={1}/>
             <BottomTabs />
