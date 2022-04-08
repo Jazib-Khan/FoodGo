@@ -1,21 +1,6 @@
 import React from "react";
 import { View, Text, Image } from "react-native";
 
-
-const yelpRestaurantInfo ={
-    name: 'Dorsia',
-    image: 'https://etimg.etb2bimg.com/photo/75161189.cms',
-    price: '$$',
-    reviews: '3200',
-    rating: 5,
-    categories: [
-        { title: "Sea Food"}, 
-        { title: "Great sea urchin ceviche"},
-    ],
-};
-
-
-
 export default function About(props) {
     const {name, image, price, reviews, rating, categories} = 
         props.route.params;
