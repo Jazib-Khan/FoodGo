@@ -66,7 +66,11 @@ export default function OrderCompleted() {
                     Your order has been placed for £{totalGBP}
                 </Text>
                 <ScrollView>
-                    <MenuItems foods={lastOrder.items} hideCheckbox={true} />
+                    <MenuItems 
+                        foods={lastOrder.items} 
+                        hideCheckbox={true}
+                        marginLeft={10}
+                    />
                     <LottieView 
                         style={{height: 200, alignSelf: 'center'}} 
                         source={require('../assets/animations/cooking.json')}

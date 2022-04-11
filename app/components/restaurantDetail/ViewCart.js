@@ -3,9 +3,11 @@ import { View , Text, TouchableOpacity, Modal, StyleSheet} from "react-native";
 import { useSelector } from "react-redux";
 import OrderItem from "./OrderItem";
 import firebase from "../../firebase";
+import LottieView from "lottie-react-native";
 
 export default function ViewCart({ navigation }) {
     const [modalVisible, setModalVisible] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const { items, restaurantNames } = useSelector((state) => state.cartReducer.selectedItems);
 
@@ -19,16 +21,20 @@ export default function ViewCart({ navigation }) {
     });
 
     const addOrderToFirebase = () => {
+        setLoading(true);
         const db = firebase.firestore();
         db.collection("orders").add({
             items:items,
             createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        }).then(() => {
+            setTimeout(() => {
+                setLoading(false);
+                navigation.navigate("OrderCompleted");
+            }, 2500);
         });
-        setModalVisible(false);
-        navigation.navigate("OrderCompleted");
     };
 
-    const styles = StyleSheet.create( {
+    const styles = StyleSheet.create({
         modalContainer: {
             flex: 1,
             justifyContent: 'flex-end',
@@ -75,33 +81,38 @@ export default function ViewCart({ navigation }) {
                         <View style={styles.subtotalContainer}>
                             <Text style={styles.subtotalText}>Subtotal</Text>
                             <Text>£{totalGBP}</Text>
-                            <View style={{flexDirection: 'row', justifyContent: 'center'}}></View>
-                                <TouchableOpacity 
+                        </View>
+                        <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
+                            <TouchableOpacity 
+                                style={{
+                                    marginTop: 240,
+                                    marginLeft: -30,
+                                    marginRight: 30,
+                                    backgroundColor: 'black',
+                                    alignItems: 'center',
+                                    padding: 13,
+                                    borderRadius: 30,
+                                    width: 300,
+                                    position: 'relative',
+                                }}
+                                onPress={() => {
+                                    addOrderToFirebase();
+                                    setModalVisible(false);
+                                }}
+                            >
+                                <Text style={{ color:'white', fontSize: 20 }}>Checkout</Text>
+                                <Text 
                                     style={{
-                                        marginTop: 240,
-                                        marginLeft: -30,
-                                        marginRight: 30,
-                                        backgroundColor: 'black',
-                                        alignItems: 'center',
-                                        padding: 13,
-                                        borderRadius: 30,
-                                        width: 300,
-                                        position: 'relative',
+                                        position: 'absolute', 
+                                        right: 20, 
+                                        color: 'white', 
+                                        fontSize: 19, 
+                                        top: 17,
                                     }}
-                                    onPress={() => {addOrderToFirebase();}}
                                 >
-                                    <Text style={{ color:'white', fontSize: 20 }}>Checkout</Text>
-                                    <Text 
-                                        style={{
-                                            position: 'absolute', 
-                                            right: 20, color: 'white', 
-                                            fontSize: 19, 
-                                            top: 17,
-                                        }}>
-                                            
-                                        £{total ? totalGBP : ""}
-                                    </Text>
-                                </TouchableOpacity>
+                                    £{total ? totalGBP : ""}
+                                </Text>
+                            </TouchableOpacity>
                         </View>
                     </View>
                 </View>
@@ -115,7 +126,7 @@ export default function ViewCart({ navigation }) {
                 animationType='slide' 
                 visible={modalVisible}
                 transparent={true}
-                onRequestClose={()=> setModalVisible(false)}
+                onRequestClose={() => setModalVisible(false)}
             >
                 {checkoutModalContent()}
             </Modal>
@@ -135,7 +146,7 @@ export default function ViewCart({ navigation }) {
                         style= {{
                             flexDirection: 'row',
                             justifyContent: 'center',
-                            width: '100%'
+                            width: '100%',
                         }}
                     >
                         <TouchableOpacity 
@@ -157,6 +168,28 @@ export default function ViewCart({ navigation }) {
                     </View>
                 </View>
             ) : (
+                <></>
+            )}
+            {loading ? (
+                <View 
+                    style={{
+                        backgroundColor: 'black', 
+                        position: 'absolute', 
+                        opacity: 0.6,
+                        justifyContent: 'center', 
+                        alignItems: 'center', 
+                        height: "100%",
+                        width: "100%",
+                    }}
+                >   
+                    <LottieView 
+                        style={{ height: 200 }}
+                        source={require('../../assets/animations/scanner.json')}
+                        autoPlay
+                        speed={3}
+                    />
+                </View>
+            ) : ( 
                 <></>
             )}
         </>
