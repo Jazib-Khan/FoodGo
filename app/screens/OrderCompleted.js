@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, SafeAreaView } from "react-native";
+import { View, Text, SafeAreaView, ScrollView } from "react-native";
 import { useSelector } from "react-redux";
 import LottieView from 'lottie-react-native';
 import firebase from '.././firebase';
 import MenuItems from "../components/restaurantDetail/MenuItems";
-import { ScrollView } from "react-native-gesture-handler";
 
 export default function OrderCompleted() {
-
     const [lastOrder, setLastOrder] = useState({
         items: [
             {
@@ -20,11 +18,9 @@ export default function OrderCompleted() {
         ],
     });
 
-    const { items, restaurantNames } = useSelector((state) => state.cartReducer.selectedItems);
+    const { items, restaurantName } = useSelector((state) => state.cartReducer.selectedItems);
 
-    const total = items
-        .map((item) => Number(item.price.replace("£", "")))
-        .reduce((prev, curr) => prev + curr, 0);
+    const total = items.map((item) => Number(item.price.replace("£", ""))).reduce((prev, curr) => prev + curr, 0);
 
     const totalGBP = total.toLocaleString("en-GB", {
         style: "currency",
@@ -47,7 +43,7 @@ export default function OrderCompleted() {
     }, []);
 
     return (
-        <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
+        <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
             <View 
                 style={{
                     margin: 15,
@@ -56,14 +52,14 @@ export default function OrderCompleted() {
                 }}
             >
                 <LottieView 
-                    style={{height: 100, alignSelf: 'center', marginBottom: 30}} 
+                    style={{ height: 100, alignSelf: 'center', marginBottom: 30 }} 
                     source={require('../assets/animations/check-mark.json')}
                     autoPlay
                     speed={0.5}
                     loop={false}
                 />
                 <Text style={{ fontSize: 20, fontWeight: 'bold' }}>
-                    Your order has been placed for £{totalGBP}
+                    Your order at {restaurantName} has been placed for £{totalGBP}
                 </Text>
                 <ScrollView>
                     <MenuItems 

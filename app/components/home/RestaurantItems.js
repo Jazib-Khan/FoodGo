@@ -8,7 +8,7 @@ export const localRestaurants = [
         image_url:
             "https://f3e6t7k9.stackpathcdn.com/wp-content/uploads/2019/10/seabird.jpg",
         categories: ["Cafe", "Bar"],
-        price: "$$",
+        price: "££",
         reviews: 1244,
         rating: 4.5,
     },
@@ -17,7 +17,7 @@ export const localRestaurants = [
         image_url:
             "https://i.guim.co.uk/img/media/cb7ecc99b0a2e64b18468d655f3226b0cd71be6a/0_283_5843_3505/master/5843.jpg?width=1200&height=900&quality=85&auto=format&fit=crop&s=b8c3e94f82e94c2858a795ed5353a76e",
         categories: ["Cafe", "Bar"],
-        price: "$$",
+        price: "££",
         reviews: 1244,
         rating: 3.7,
     },
@@ -26,11 +26,11 @@ export const localRestaurants = [
         image_url:
             "https://d3aux7tjp119y2.cloudfront.net/original_images/Tak2-CMSTemplate_IrMZHla.jpg",
         categories: ["Cafe", "Bar"],
-        price: "$$",
+        price: "££",
         reviews: 12,
         rating: 5,
     },
-]
+];
 
 export default function RestaurantItems({ navigation, ...props }) {
     return (
@@ -39,7 +39,7 @@ export default function RestaurantItems({ navigation, ...props }) {
                 <TouchableOpacity 
                     key={index}
                     activeOpacity={1} 
-                    style={{ marginBottom: 30}}
+                    style={{ marginBottom: 30 }}
                     onPress={() => 
                         navigation.navigate("RestaurantDetail", {
                             name: restaurant.name,
@@ -54,11 +54,8 @@ export default function RestaurantItems({ navigation, ...props }) {
                     <View 
                         style={{ marginTop: 10, padding: 15, backgroundColor: "white"}}
                     >
-                        <RestaurantImage image={restaurant.image_url}/>
-                        <RestaurantInfo 
-                            name={restaurant.name} 
-                            rating={restaurant.rating}
-                        />
+                        <RestaurantImage image={restaurant.image_url} />
+                        <RestaurantInfo name={restaurant.name} rating={restaurant.rating} />
                     </View>
                 </TouchableOpacity>
             ))}
@@ -74,7 +71,7 @@ const RestaurantImage = (props) => (
             }} 
             style = {{ width: "100%", height: 180 }}
         />
-        <TouchableOpacity style={{position: "absolute", right: 29, top: 20}}>
+        <TouchableOpacity style={{ position: "absolute", right: 29, top: 20 }}>
             <MaterialCommunityIcons name="heart-outline" size={25} color="#fff" />
         </TouchableOpacity>
     </>

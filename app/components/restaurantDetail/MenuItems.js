@@ -34,12 +34,12 @@ export default function MenuItems({
             },
         });
 
-        const cartItems = useSelector(
-            (state) => state.cartReducer.selectedItems.items
-        );
+    const cartItems = useSelector(
+	(state) => state.cartReducer.selectedItems.items
+    );
 
-        const isFoodInCart = (food, cartItems) =>
-            Boolean(cartItems.find((item) => item.title === food.title));
+    const isFoodInCart = (food, cartItems) =>
+	Boolean(cartItems.find((item) => item.title === food.title));
         
 
     return (
@@ -51,14 +51,14 @@ export default function MenuItems({
                             <></> 
                         ) : (
                             <BouncyCheckbox 
-                                iconStyle={{ borderColor: 'lightgray', borderRadius: 0}}
+                                iconStyle={{ borderColor: 'lightgray', borderRadius: 0 }}
                                 fillColor="green"
                                 isChecked={isFoodInCart(food, cartItems)}
                                 onPress={(checkboxValue) => selectItem(food, checkboxValue)}
                             />
                         )}
                         <FoodInfo food={food} />
-                        <FoodImage food={food} marginLeft={marginLeft ? marginLeft: 0}/>
+                        <FoodImage food={food} marginLeft={marginLeft ? marginLeft: 0} />
                     </View>
                     <Divider 
                         width={0.5} 
@@ -72,7 +72,7 @@ export default function MenuItems({
 }
 
 const FoodInfo = (props) => (
-    <View style={{width: 240, justifyContent: 'space-evenly' }}>
+    <View style={{ width: 240, justifyContent: 'space-evenly' }}>
         <Text style={styles.titleStyle}>{props.food.title}</Text>
         <Text>{props.food.description}</Text>
         <Text>{props.food.price}</Text>
@@ -82,7 +82,7 @@ const FoodInfo = (props) => (
 const FoodImage = ({ marginLeft, ...props }) => (
     <View>
         <Image 
-            source={{uri: props.food.image}} 
+            source={{uri: props.food.image }} 
             style={{
                 width: 100, 
                 height: 100, 

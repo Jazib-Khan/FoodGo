@@ -8,7 +8,6 @@ export default function About(props) {
     const formattedCategories = categories.map((cat) => cat.title).join(" • ");
 
     const description = `${formattedCategories} ${price ? " • " + price : ""} • 🎫 • ${rating} ⭐ (${reviews}+)`;
-
     return (
         <View>
             <RestaurantImage image={image} />
@@ -19,7 +18,7 @@ export default function About(props) {
 }
 
 const RestaurantImage = (props) => (
-    <Image source={{ uri: props.image }} style= {{ width: "100%", height:180 }}/>
+    <Image source={{ uri: props.image }} style= {{ width: "100%", height:180 }} />
 );
 
 const RestaurantName = (props) => (
@@ -46,4 +45,4 @@ const RestaurantDescription = (props) => (
     >
         {props.description}
     </Text>    
-)
+);

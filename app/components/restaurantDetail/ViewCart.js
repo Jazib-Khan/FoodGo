@@ -9,11 +9,9 @@ export default function ViewCart({ navigation }) {
     const [modalVisible, setModalVisible] = useState(false);
     const [loading, setLoading] = useState(false);
 
-    const { items, restaurantNames } = useSelector((state) => state.cartReducer.selectedItems);
+    const { items, restaurantName } = useSelector((state) => state.cartReducer.selectedItems);
 
-    const total = items
-        .map((item) => Number(item.price.replace("£", "")))
-        .reduce((prev, curr) => prev + curr, 0);
+    const total = items.map((item) => Number(item.price.replace("£", ""))).reduce((prev, curr) => prev + curr, 0);
 
     const totalGBP = total.toLocaleString("en-GB", {
         style: "currency",
@@ -48,7 +46,7 @@ export default function ViewCart({ navigation }) {
             borderWidth: 1,
         },
 
-        restaurantNames: {
+        restaurantName: {
             textAlign: 'center',
             fontWeight: '600',
             fontSize: 18,
@@ -74,7 +72,7 @@ export default function ViewCart({ navigation }) {
             <>
                 <View style={styles.modalContainer}>
                     <View style={styles.modalCheckoutContainer}>
-                        <Text style={styles.restaurantNames}>{restaurantNames}</Text>
+                        <Text style={styles.restaurantName}>{restaurantName}</Text>
                         {items.map((item, index) => (
                             <OrderItem key={index} item={item} />
                         ))}
@@ -85,15 +83,13 @@ export default function ViewCart({ navigation }) {
                         <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
                             <TouchableOpacity 
                                 style={{
-                                    marginTop: 240,
-                                    marginLeft: -30,
-                                    marginRight: 30,
-                                    backgroundColor: 'black',
-                                    alignItems: 'center',
+                                    marginTop: 20,
+                                    backgroundColor: "black",
+                                    alignItems: "center",
                                     padding: 13,
                                     borderRadius: 30,
                                     width: 300,
-                                    position: 'relative',
+                                    position: "relative",
                                 }}
                                 onPress={() => {
                                     addOrderToFirebase();
@@ -143,7 +139,7 @@ export default function ViewCart({ navigation }) {
                     }}
                 >
                     <View 
-                        style= {{
+                        style={{
                             flexDirection: 'row',
                             justifyContent: 'center',
                             width: '100%',
