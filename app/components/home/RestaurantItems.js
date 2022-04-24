@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import MaterialCommunityIcons from 'react-native-vector-icons/Ionicons';
 
+//Array of object of restaurants
 export const localRestaurants = [
     {
         name:"Beachside Bar",
@@ -34,6 +35,8 @@ export const localRestaurants = [
 
 export default function RestaurantItems({ navigation, ...props }) {
     return (
+        // Loops beings here - Fetches the restaurant from the API
+        // and loops through each index
         <>
             {props.restaurantData.map((restaurant, index) => (
                 <TouchableOpacity 
@@ -41,6 +44,7 @@ export default function RestaurantItems({ navigation, ...props }) {
                     activeOpacity={1} 
                     style={{ marginBottom: 30 }}
                     onPress={() => 
+                        //Gathers details from the fetched restaurant
                         navigation.navigate("RestaurantDetail", {
                             name: restaurant.name,
                             image: restaurant.image_url,
@@ -51,6 +55,7 @@ export default function RestaurantItems({ navigation, ...props }) {
                         })
                     }
                 >
+                    {/*Styles padding around image */}
                     <View 
                         style={{ marginTop: 10, padding: 15, backgroundColor: "white"}}
                     >
@@ -60,17 +65,20 @@ export default function RestaurantItems({ navigation, ...props }) {
                 </TouchableOpacity>
             ))}
         </>
+        // Loop ends here
     );
 }
 
 const RestaurantImage = (props) => (
     <>
         <Image 
+        // Displays remote image and styliastion
             source = {{
                 uri: props.image,
             }} 
             style = {{ width: "100%", height: 180 }}
         />
+        {/*Adds stylisation to the icon placed within the images*/}
         <TouchableOpacity style={{ position: "absolute", right: 29, top: 20 }}>
             <MaterialCommunityIcons name="heart-outline" size={25} color="#fff" />
         </TouchableOpacity>
@@ -87,6 +95,7 @@ const RestaurantInfo = (props) => (
         }}
     >
         <View>
+            {/*Name of restaurant and their delivery times */}
             <Text style={{ fontSize: 15, fontWeight: "bold" }}>{props.name}</Text>
             <Text style={{ fontSize: 13, color: "gray" }}>30-45 • min</Text>
         </View>
@@ -100,6 +109,7 @@ const RestaurantInfo = (props) => (
                 borderRadius: 15,
             }}
         >
+            {/*Ratings of the restaurant */}
             <Text>{props.rating}</Text>
         </View>
     </View>

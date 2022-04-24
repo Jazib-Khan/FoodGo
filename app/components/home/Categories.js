@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text, Image, ScrollView} from "react-native";
 
+// Array of image items for the categories
 const items = [
     {
         image: require('../../assets/images/shopping-bag.png'),
@@ -42,7 +43,10 @@ export default function Categories() {
                 paddingLeft: 20,
             }}
         >
+            {/* Displays items horizontally and makes the itemsc scrollable */}
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                {/* Loop begins here 
+                Loops through each item in the array and displays them and styles them*/}
                 {items.map((item, index) => (
                     <View key={index} style={{ alignItems: "center", marginRight: 30 }}>
                     <Image 
@@ -56,6 +60,7 @@ export default function Categories() {
                     <Text style={{ fontSize: 13, fontWeight: "bold"}}>{item.text}</Text>
                 </View>
                 ))}
+                {/* Loop ends here */}
             </ScrollView>
         </View>
     );

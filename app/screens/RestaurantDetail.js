@@ -17,7 +17,7 @@ const foods = [
         description: "Foodie face",
         price: "£20",
         image: "https://adamliaw.com/app/uploads/2019/03/Shandong-Chicken-Small-1-of-1.jpg"
-    },
+    },    
 ];
 
 export default function RestaurantDetail({ route, navigation }) {

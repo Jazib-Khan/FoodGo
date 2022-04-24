@@ -4,6 +4,7 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 export default function BottomTabs() {
     return (
+        // Style area around icons
         <View 
             style={{ 
                 flexDirection: "row", 
@@ -12,11 +13,11 @@ export default function BottomTabs() {
                 justifyContent: "space-between",
             }}
         >
-            <Icon icon="home" text="Home" />
+            {/* Display Icons */}
             <Icon icon="search" text="Browse" />
-            <Icon icon="shopping-bag" text="Grocery" />
+            <Icon icon="home" text="Home" />
             <Icon icon="receipt" text="Orders" />
-            <Icon icon="user" text="Account" />
+            <Icon icon="info" text="Learn More" />            
         </View>
     );
 }
@@ -27,9 +28,11 @@ const Icon = (props) => (
             <FontAwesome5 
                 name={props.icon} 
                 size={25} 
+                // Style icons
                 style={{
                     marginBottom: 3, 
                     alignSelf: "center",
+                    color: "green"
                 }}
             />
             <Text>{props.text}</Text>

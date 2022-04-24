@@ -5,11 +5,14 @@ import { Divider } from "react-native-elements";
 import { useDispatch, useSelector } from "react-redux";
 
 const styles = StyleSheet.create({
+    //Styles the menu items
     menuItemStyle: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        margin: 20,
+        margin: 10,
     },
+
+    //Style the title of the food items
     titleStyle: {
         fontSize: 19,
         fontWeight: "600",
@@ -34,19 +37,19 @@ export default function MenuItems({
             },
         });
 
-    const cartItems = useSelector(
-	(state) => state.cartReducer.selectedItems.items
-    );
+    const cartItems = useSelector((state) => state.cartReducer.selectedItems.items);
 
     const isFoodInCart = (food, cartItems) =>
-	Boolean(cartItems.find((item) => item.title === food.title));
+        Boolean(cartItems.find((item) => item.title === food.title));
         
 
     return (
         <ScrollView showsVerticalScrollIndicator={false}>
+            {/*Loop beings here - Loops through each food item in the array 
+            and concatinates checkboxes*/}
             {foods.map((food, index) => (
                 <View key={index}>
-                    <View style= {styles.menuItemStyle}>
+                    <View style={styles.menuItemStyle}>
                         {hideCheckbox ? (
                             <></> 
                         ) : (
@@ -60,6 +63,7 @@ export default function MenuItems({
                         <FoodInfo food={food} />
                         <FoodImage food={food} marginLeft={marginLeft ? marginLeft: 0} />
                     </View>
+                    {/*Separate's food items */}
                     <Divider 
                         width={0.5} 
                         orientation='vertical' 
@@ -72,6 +76,7 @@ export default function MenuItems({
 }
 
 const FoodInfo = (props) => (
+    // Displays food title, description and price
     <View style={{ width: 240, justifyContent: 'space-evenly' }}>
         <Text style={styles.titleStyle}>{props.food.title}</Text>
         <Text>{props.food.description}</Text>
@@ -80,9 +85,10 @@ const FoodInfo = (props) => (
 );
 
 const FoodImage = ({ marginLeft, ...props }) => (
+    // Fetches and displays food image and styles the image
     <View>
         <Image 
-            source={{uri: props.food.image }} 
+            source={{ uri: props.food.image }} 
             style={{
                 width: 100, 
                 height: 100, 
