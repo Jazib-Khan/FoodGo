@@ -44,7 +44,7 @@ export default function RestaurantItems({ navigation, ...props }) {
                     activeOpacity={1} 
                     style={{ marginBottom: 30 }}
                     onPress={() => 
-                        //Gathers details from the fetched restaurant
+                        //Takes user to the Restaurant Detail screen
                         navigation.navigate("RestaurantDetail", {
                             name: restaurant.name,
                             image: restaurant.image_url,
