@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     menuItemStyle: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        margin: 20,
+        margin: 10,
     },
 
     //Style the title of the food items

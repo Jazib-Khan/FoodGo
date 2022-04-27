@@ -135,7 +135,7 @@ export default function ViewCart({ navigation }) {
                         justifyContent: 'center',
                         flexDirection: 'row',
                         position: 'absolute',
-                        bottom: -100,
+                        bottom: -50,
                         zIndex: 999,
                     }}
                 >

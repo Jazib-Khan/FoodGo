@@ -17,8 +17,7 @@ export default function Home({ navigation }) {
 
     const getRestaurantsFromYelp = () => {
         // Pulls restaurant information from their respective location
-        const yelpUrl = 
-            `https://api.yelp.com/v3/businesses/search?term=restaurants&location=${city}`;
+        const yelpUrl = `https://api.yelp.com/v3/businesses/search?term=restaurants&location=${city}`;
         
         // Passes credentials to API
         const apiOptions = {

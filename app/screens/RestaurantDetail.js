@@ -17,14 +17,20 @@ const foods = [
         description: "Foodie face",
         price: "£20",
         image: "https://adamliaw.com/app/uploads/2019/03/Shandong-Chicken-Small-1-of-1.jpg"
-    },    
+    },
+    {
+        title: "Smoothie",
+        description: "Delicious Smoothie",
+        price: "£6",
+        image: "https://hips.hearstapps.com/hmg-prod/images/delish-how-to-make-a-smoothie-horizontal-1542310071.png"
+    },      
 ];
 
 export default function RestaurantDetail({ route, navigation }) {
     return (
         <View>
             <About route={route} />
-            <Divider width={1.8} style={{ marginVertical:20 }} />
+            <Divider width={1.8} style={{ marginVertical: 20 }} />
             <MenuItems restaurantName={route.params.name} foods={foods} />
             <ViewCart navigation={navigation} />
         </View>
