@@ -23,6 +23,7 @@ export default function ViewCart({ navigation }) {
         const db = firebase.firestore();
         db.collection("orders").add({
             items:items,
+            restaurantName: restaurantName,
             createdAt: firebase.firestore.FieldValue.serverTimestamp(),
         }).then(() => {
             setTimeout(() => {

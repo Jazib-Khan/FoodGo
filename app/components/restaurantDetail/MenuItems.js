@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     menuItemStyle: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        margin: 10,
+        margin: 20,
     },
 
     //Style the title of the food items
@@ -39,8 +39,7 @@ export default function MenuItems({
 
     const cartItems = useSelector((state) => state.cartReducer.selectedItems.items);
 
-    const isFoodInCart = (food, cartItems) =>
-        Boolean(cartItems.find((item) => item.title === food.title));
+    const isFoodInCart = (food, cartItems) => Boolean(cartItems.find((item) => item.title === food.title));
         
 
     return (
