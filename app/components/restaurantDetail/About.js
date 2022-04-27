@@ -22,7 +22,7 @@ export default function About(props) {
 
 //Retrieves restaurant image and stylises the image
 const RestaurantImage = (props) => (
-    <Image source={{ uri: props.image }} style={{ width: "100%", height:180 }} />
+    <Image source={{ uri: props.image }} style={{ width: "100%", height: 180 }} />
 );
 
 //Retrieves restaurant name and stylises the name

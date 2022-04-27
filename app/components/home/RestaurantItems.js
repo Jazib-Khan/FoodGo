@@ -5,7 +5,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/Ionicons';
 //Array of object of restaurants
 export const localRestaurants = [
     {
-        name:"Beachside Bar",
+        name:"Bistro Bazaar",
         image_url:
             "https://f3e6t7k9.stackpathcdn.com/wp-content/uploads/2019/10/seabird.jpg",
         categories: ["Cafe", "Bar"],
@@ -14,7 +14,7 @@ export const localRestaurants = [
         rating: 4.5,
     },
     {
-        name:"Benihana",
+        name:"Cuisine Wave",
         image_url:
             "https://i.guim.co.uk/img/media/cb7ecc99b0a2e64b18468d655f3226b0cd71be6a/0_283_5843_3505/master/5843.jpg?width=1200&height=900&quality=85&auto=format&fit=crop&s=b8c3e94f82e94c2858a795ed5353a76e",
         categories: ["Cafe", "Bar"],
@@ -79,7 +79,7 @@ const RestaurantImage = (props) => (
             style = {{ width: "100%", height: 180 }}
         />
         {/*Adds stylisation to the icon placed within the images*/}
-        <TouchableOpacity style={{ position: "absolute", right: 29, top: 20 }}>
+        <TouchableOpacity style={{ position: "absolute", right: 20, top: 20 }}>
             <MaterialCommunityIcons name="heart-outline" size={25} color="#fff" />
         </TouchableOpacity>
     </>

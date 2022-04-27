@@ -10,7 +10,7 @@ export default function SearchBar({ cityHandler }) {
             {/*Google Maps search component API for react native. 
             Customizable google places. (API adds locations into search bars) */}
             <GooglePlacesAutocomplete 
-                query={{ key: 'AIzaSyDOL4UKTeihc58zTsr_sXqsrqN-rDNeGNE'}}
+                query={{ key: 'AIzaSyDOL4UKTeihc58zTsr_sXqsrqN-rDNeGNE' }}
                 onPress={(data, details = null) => {
                         console.log(data.description);
                         const city = data.description.split(",")[0];
