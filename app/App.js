@@ -9,19 +9,19 @@ const slides = [
   {
     id: 1,
     title: 'Discover Best Places',
-    description: 'blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah ',
+    description: 'Find the best restaurants and takeaways near you! Giving away surplus food at the best prices. All completely available at the click of a button. ',
     image: require('./assets/images/onboardScreen1.png')
   },
   {
     id: 2,
     title: 'Choose A Tasty Dish',
-    description: 'blah blah blah blah',
+    description: 'Select a variety of delicious dishes from a plethora of options',
     image: require('./assets/images/onboardScreen2.png')
   },
   {
     id: 3,
     title: 'Pickup or Delivery',
-    description: 'blah blah blah blah',
+    description: 'Have the option to have your food delivered to you or to pick up from the selected restaurant or takeaway.',
     image: require('./assets/images/onboardScreen3.png')
   },
 ]
