@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { Divider } from "react-native-elements";
 import { useDispatch, useSelector } from "react-redux";
+import { DarkTheme } from "@react-navigation/native";
 
 const styles = StyleSheet.create({
     //Styles the menu items

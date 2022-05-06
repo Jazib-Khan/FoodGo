@@ -14,7 +14,7 @@ export default function BottomTabs({ navigation }) {
             }}
         >
             {/* Display Icons */}
-            <Icon icon="search" text="Map" onPress={() => navigation.current.navigate("Home")} />
+            <Icon icon="cog" text="Settings" onPress={() => navigation.current.navigate("Settings")} />
             <Icon icon="home" text="Home" onPress={() => navigation.current.navigate("Home")} />
             <Icon icon="receipt" text="Orders" onPress={() => navigation.current.navigate("OrderCompleted")} />
             <Icon icon="info" text="Learn More" onPress={() => navigation.current.navigate("Information")} />   
