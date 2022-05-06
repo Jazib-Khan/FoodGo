@@ -1,9 +1,10 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { Divider } from "react-native-elements";
 import About from "../components/restaurantDetail/About";
 import MenuItems from "../components/restaurantDetail/MenuItems";
 import ViewCart from "../components/restaurantDetail/ViewCart";
+import { useSelector } from 'react-redux';
 
 const foods = [
     {
@@ -27,8 +28,9 @@ const foods = [
 ];
 
 export default function RestaurantDetail({ route, navigation }) {
+    const theme = useSelector((state) => state.themeReducer.theme);
     return (
-        <View>
+        <View style={[styles.back, styles[`back${theme}`]]}>
             <About route={route} />
             <Divider width={1.8} style={{ marginVertical: 20 }} />
             <MenuItems restaurantName={route.params.name} foods={foods} />
@@ -36,3 +38,19 @@ export default function RestaurantDetail({ route, navigation }) {
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    page: {
+        backgroundColor: "#eee", 
+        flex: 1
+    },
+    pageDark: {
+        backgroundColor: "#2c2c2c", 
+    },
+    back: {
+        backgroundColor: "white"
+    },
+    backDark: {
+        backgroundColor: "black"
+    },
+});

@@ -1,10 +1,12 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import { useSelector } from "react-redux";
 
 export default function SearchBar({ cityHandler }) {
+    const theme = useSelector((state) => state.themeReducer.theme);
     return (
         <View style={{ marginTop: 15, flexDirection: "row"}}>
             {/*Google Maps search component API for react native. 
@@ -20,18 +22,23 @@ export default function SearchBar({ cityHandler }) {
                 placeholder="Search"
                 styles={{
                         textInput: {
-                            backgroundColor: "#eee",
+                            backgroundColor: theme === "Light" ? "#eee" : "#2c2c2c",
+                            color: theme === "Light" ? "#000" : "#fff",
                             borderRadius: 20,
                             fontWeight: "700",
-                            marginTop: 7
+                            marginTop: 7,
                         },
                         textInputContainer: {
-                            backgroundColor: "#eee",
+                            backgroundColor: theme === "Light" ? "#eee" : "#2c2c2c",
+                            color: theme === "Light" ? "#000" : "#fff",
                             borderRadius: 50,
                             flexDirection: "row",
                             alignItems: "center",
                             marginRight: 10,
                         },
+                        predefinedPlacesDescription: {
+                            color: '#fff',
+                          },
                 }}
             
                 // Location Icon stylisation
@@ -44,24 +51,38 @@ export default function SearchBar({ cityHandler }) {
                 // Clock Icon and stylisation
                 renderRightButton={() => (
                         <View
-                            style={{
-                                flexDirection: "row",
-                                marginRight: 8,
-                                backgroundColor: "white",
-                                padding: 9,
-                                borderRadius: 30,
-                                alignItems: "center",
-                            }}
+                            style={[styles.searchButton, styles[`searchButton${theme}`]]}
                         >
                             <AntDesign 
                                 name='clockcircle' 
                                 size={11} 
                                 style={{ marginRight: 6, color: "green" }} 
                             />
-                            <Text>Search</Text>
+                            <Text style={[styles.text, styles[`text${theme}`]]}>Search</Text>
                         </View>
                 )}
             />
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    searchButton: {
+        flexDirection: "row",
+        marginRight: 8,
+        backgroundColor: "white",
+        padding: 9,
+        borderRadius: 30,
+        alignItems: "center",
+    },
+    searchButtonDark: {
+        backgroundColor: "black",
+    },
+    text: {
+        color: "black"
+    },
+    textDark: {
+        color: "white"
+    }
+    
+});

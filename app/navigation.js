@@ -23,7 +23,7 @@ export default function RootNavigation() {
 
     return (
         <ReduxProvider store={store}>
-            <NavigationContainer ref={navRef} theme={DarkTheme}>
+            <NavigationContainer ref={navRef}>
                 <Stack.Navigator initalRouteName="Home" screenOptions={screenOptions}>
                     <Stack.Screen name="Settings" component={Settings}/>
                     <Stack.Screen name="Home" component={Home}/>

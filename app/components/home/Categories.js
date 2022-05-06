@@ -1,5 +1,6 @@
 import React from "react";
-import { View, Text, Image, ScrollView} from "react-native";
+import { View, Text, Image, ScrollView, StyleSheet} from "react-native";
+import { useSelector } from "react-redux";
 
 // Array of image items for the categories
 const items = [
@@ -34,14 +35,10 @@ const items = [
 ];
 
 export default function Categories() {
+    const theme = useSelector((state) => state.themeReducer.theme);
     return (
         <View 
-		style={{
-                marginTop: 5,
-                backgroundColor: "#fff",
-                paddingVertical: 10,
-                paddingLeft: 20,
-            }}
+		style={[styles.container, styles[`container${theme}`] ]}
         >
             {/* Displays items horizontally and makes the itemsc scrollable */}
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
@@ -57,7 +54,7 @@ export default function Categories() {
                             resizeMode: "contain",
                         }} 
                     />
-                    <Text style={{ fontSize: 13, fontWeight: "bold"}}>{item.text}</Text>
+                    <Text style={[styles.containerTitle, styles[`containerTitle${theme}`]]}>{item.text}</Text>
                 </View>
                 ))}
                 {/* Loop ends here */}
@@ -65,3 +62,23 @@ export default function Categories() {
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    container: {
+        marginTop: 5,
+        backgroundColor: "#fff",
+        paddingVertical: 10,
+        paddingLeft: 20,
+    },
+    containerDark: {
+        backgroundColor: "black"
+    },
+    containerTitle: {
+        fontSize: 13, 
+        fontWeight: "bold",
+        color: "#000",
+    },
+    containerTitleDark: {
+        color: "#fff"
+    }
+});

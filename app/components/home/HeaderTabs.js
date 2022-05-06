@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { useSelector } from "react-redux";
 
 export default function HeaderTabs(props) {
+    const theme = useSelector((state) => state.themeReducer.theme);
     // Rendering Header button and stylising 
     return (
         // React native by default shows things in columns
@@ -16,7 +18,7 @@ export default function HeaderTabs(props) {
             />
             <HeaderButton 
                 text="Pickup" 
-                btnColor="white" 
+                btnColor={theme === "Light" ? "black" : "white"} 
                 textColor="black" 
                 activeTab={props.activeTab} 
                 setActiveTab={props.setActiveTab}
@@ -25,26 +27,55 @@ export default function HeaderTabs(props) {
     );
 }
 
-const HeaderButton = (props) => (
-    <TouchableOpacity 
-        style={{
-            backgroundColor: props.activeTab === props.text ? "green" : "white",
-            paddingVertical: 6,
-            paddingHorizontal: 16,
-            borderRadius: 30,
-        }}
-    // Picks up which tab is active and can switch between coloured 
-    //indicators to highlight which tab is currently active
-        onPress = {() => props.setActiveTab(props.text)}
-    >
-        <Text 
-            style={{ 
-                color: props.activeTab === props.text ? "white" : "green", 
-                fontSize: 15, 
-                fontWeight: "900",
+const HeaderButton = (props) => {
+    const theme = useSelector((state) => state.themeReducer.theme);
+    
+    let color = "white";
+
+    if(theme === "Dark" && props.activeTab !== props.text) {
+        color = "black";
+    }
+
+    return (
+        <TouchableOpacity 
+            style={{
+                backgroundColor: props.activeTab === props.text ? "green" : color,
+                paddingVertical: 6,
+                paddingHorizontal: 16,
+                borderRadius: 30,
             }}
+        // Picks up which tab is active and can switch between coloured 
+        //indicators to highlight which tab is currently active
+            onPress = {() => props.setActiveTab(props.text)}
         >
-            {props.text}
-        </Text>
-    </TouchableOpacity>
-);
+            <Text 
+                style={{ 
+                    color: props.activeTab === props.text ? color : "green", 
+                    fontSize: 15, 
+                    fontWeight: "900",
+                }}
+            >
+                {props.text}
+            </Text>
+        </TouchableOpacity>
+    );
+}
+
+const styles = StyleSheet.create({
+    wrapper: {
+        flexDirection: "row", 
+        padding: 10,
+        paddingHorizontal: 30,
+        justifyContent: "space-between",
+    },
+    wrapperDark: {
+        backgroundColor: "black"
+    },
+    text: {
+        color: "black"
+    },
+    textDark: {
+        color: "white"
+    },
+    
+});

@@ -1,13 +1,6 @@
 import React from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
-
-const summary = [
-    {
-        title: "Dark Mode",
-        description: "blah blah blah",
-        image: "https://images.unsplash.com/photo-1609796574417-09f9675bfd03?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8Zm9vZCUyMHNoYXJpbmd8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
-    },  
-];
+import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { useSelector, useDispatch } from "react-redux";
 
 const styles = StyleSheet.create({
     summaryStyle: {
@@ -23,11 +16,20 @@ const styles = StyleSheet.create({
 });
 
 export default function Info() {
+    const dispatch = useDispatch();
+    const theme = useSelector((state) => state.themeReducer.theme);
+
     return (
-        <View style={styles.summaryStyle}>
-            <Learn summary={summary[0]} />
-            <InfoImage summary={summary[0]} />
-        </View>
+        <TouchableOpacity onPress={() => {
+            dispatch({
+                type: 'SWITCH_THEME', 
+                payload: {
+                    theme: theme === "Light" ? "Dark" : "Light"
+                },
+            });
+        }}>
+            <Text>Switch Theme</Text>
+        </TouchableOpacity>
     );
 }
 

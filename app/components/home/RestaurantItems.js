@@ -1,6 +1,7 @@
 import React from "react";
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 import MaterialCommunityIcons from 'react-native-vector-icons/Ionicons';
+import { useSelector } from "react-redux";
 
 //Array of object of restaurants
 export const localRestaurants = [
@@ -34,6 +35,8 @@ export const localRestaurants = [
 ];
 
 export default function RestaurantItems({ navigation, ...props }) {
+    const theme = useSelector((state) => state.themeReducer.theme);
+
     return (
         // Loops beings here - Fetches the restaurant from the API
         // and loops through each index
@@ -57,7 +60,7 @@ export default function RestaurantItems({ navigation, ...props }) {
                 >
                     {/*Styles padding around image */}
                     <View 
-                        style={{ marginTop: 10, padding: 15, backgroundColor: "white"}}
+                        style={[styles.card, styles[`card${theme}`]]}
                     >
                         <RestaurantImage image={restaurant.image_url} />
                         <RestaurantInfo name={restaurant.name} rating={restaurant.rating} />
@@ -85,32 +88,55 @@ const RestaurantImage = (props) => (
     </>
 );
 
-const RestaurantInfo = (props) => (
-    <View 
-        style={{ 
-            flexDirection: "row", 
-            justifyContent: "space-between", 
-            alignItems: "center",
-            marginTop: 10,
-        }}
-    >
-        <View>
-            {/*Name of restaurant and their delivery times */}
-            <Text style={{ fontSize: 15, fontWeight: "bold" }}>{props.name}</Text>
-            <Text style={{ fontSize: 13, color: "gray" }}>30-45 • min</Text>
-        </View>
+const RestaurantInfo = (props) => {
+    const theme = useSelector((state) => state.themeReducer.theme);
+
+    return (
         <View 
-            style={{
-                backgroundColor: '#eee', 
-                height: 30, 
-                width: 30, 
+            style={{ 
+                flexDirection: "row", 
+                justifyContent: "space-between", 
                 alignItems: "center",
-                justifyContent: "center",
-                borderRadius: 15,
+                marginTop: 10,
             }}
         >
-            {/*Ratings of the restaurant */}
-            <Text>{props.rating}</Text>
+            <View>
+                {/*Name of restaurant and their delivery times */}
+                <Text style={[styles.name, styles[`name${theme}`]]}>{props.name}</Text>
+                <Text style={{ fontSize: 13, color: "gray" }}>30-45 • min</Text>
+            </View>
+            <View 
+                style={{
+                    backgroundColor: '#eee', 
+                    height: 30, 
+                    width: 30, 
+                    alignItems: "center",
+                    justifyContent: "center",
+                    borderRadius: 15,
+                }}
+            >
+                {/*Ratings of the restaurant */}
+                <Text>{props.rating}</Text>
+            </View>
         </View>
-    </View>
-);
+    )
+};
+
+const styles = StyleSheet.create({
+    card: {
+        marginTop: 10, 
+        padding: 15, 
+        backgroundColor: "white"
+    },
+    cardDark: {
+        backgroundColor: "black"
+    },
+    name: {
+        fontSize: 15, 
+        fontWeight: "bold",
+        color: "black"
+    },
+    nameDark: {
+        color: "white"
+    }
+});
