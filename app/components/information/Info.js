@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 const summary = [
     {
         title: "What Food Go aims to achieve:",
-        description: "write information here!!! ",
+        description: "Food Go is an application system designed to target the ongoing issue of the food crisis more specifically food wastages and famine. The app is intended to be used by those who wish to consume food at more affordable prices and thus will be preventing items that would otherwise be thrown to waste. Users can view local food items by entering their location within the app and then a display of food items in the area that are being donated by these restaurants are shown and users can make an order to purchase said food items.",
         image: "https://images.unsplash.com/photo-1609796574417-09f9675bfd03?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8Zm9vZCUyMHNoYXJpbmd8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60"
     },  
 ];

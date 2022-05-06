@@ -25,6 +25,6 @@ const styles = StyleSheet.create({
         flex: 1
     },
     pageDark: {
-        backgroundColor: "#2c2c2c", 
+        backgroundColor: "black", 
     }
 });

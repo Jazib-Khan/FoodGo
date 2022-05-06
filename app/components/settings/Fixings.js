@@ -2,19 +2,6 @@ import React from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 
-const styles = StyleSheet.create({
-    summaryStyle: {
-        flexDirection: "row",
-        justifyContent: "space-between",
-        margin: 20,
-    },
-
-    titleStyle: {
-        fontSize: 19,
-        fontWeight: '600',
-    }
-});
-
 export default function Info() {
     const dispatch = useDispatch();
     const theme = useSelector((state) => state.themeReducer.theme);
@@ -28,7 +15,7 @@ export default function Info() {
                 },
             });
         }}>
-            <Text>Switch Theme</Text>
+            <Text style={[styles.text, styles[`text${theme}`]]}>Switch Theme</Text>
         </TouchableOpacity>
     );
 }
@@ -51,3 +38,12 @@ const InfoImage = (props) => (
         />
     </View>
 );
+
+const styles = StyleSheet.create({
+    text: {
+        color: 'black'
+    },
+    textDark: {
+        color: 'white'
+    }
+});
