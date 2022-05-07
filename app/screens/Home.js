@@ -12,7 +12,7 @@ import { useSelector } from 'react-redux';
 const YELP_API_KEY = "3Uep2K23NL0fyKuqbk7J6XbFW09HAxY_1mxZWp_zgXFGEX9xtdfO37EsA55sWwpDkYyVLjAR3qD_sUZVoZ-SPXYoqVxSP6o4q197BHdtkAhr0HxzWT_RZruwHoVJYnYx";
 
 export default function Home({ navigation }) {
-    const theme = useSelector((state) => state.themeReducer.theme);
+    const theme = useSelector((state) => state.themeReducer.theme); //adjust theme to allow dark mode
 
     const [restaurantData, setRestaurantData] = useState(localRestaurants); // Imports restaurant Data
     const [city, setCity] = useState("Plymouth"); // Sets the inital city where the API retrieves restaurant information from
@@ -50,7 +50,7 @@ export default function Home({ navigation }) {
         // Rendering components
         <SafeAreaView style={[styles.page, styles[`page${theme}`]]}>
             <View style={[styles.back, styles[`back${theme}`]]}>
-                <HeaderTabs activeTab={activeTab} setActiveTab={setActiveTab} />
+                <HeaderTabs activeTab={activeTab} setActiveTab={setActiveTab} /> 
                 <SearchBar cityHandler={setCity} />
             </View>
             <ScrollView showsVerticalScrollIndicator={false}>
