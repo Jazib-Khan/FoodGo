@@ -8,20 +8,20 @@ import { useSelector } from 'react-redux';
 
 const foods = [
     {
-        title: "Lasagna",
-        description: "Food init",
-        price: "£13",
-        image: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https:%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F24%2F2013%2F12%2Fgettyimages-998672040_0-2000.jpg"
+        title: "Tofu Pad Thai",
+        description: "An easy, plant-based alternative to classic pad Thai, this version combines tofu and asparagus with crispy beansprouts, onions, noodles and a zingy sauce.",
+        price: "£12",
+        image: "https://minimalistbaker.com/wp-content/uploads/2019/01/Easy-Vegan-Pad-Thai-SQUARE.jpg"
     },
     {
-        title: "Chicken",
-        description: "Foodie face",
-        price: "£20",
+        title: "Chicken tenders",
+        description: "Crispy baked chicken tenders soaked in lemon garlic flavours. coated in golden parmesan pank crumb.",
+        price: "8",
         image: "https://adamliaw.com/app/uploads/2019/03/Shandong-Chicken-Small-1-of-1.jpg"
     },
     {
         title: "Smoothie",
-        description: "Delicious Smoothie",
+        description: "Delicious Smoothie which contains one of your five a day!",
         price: "£6",
         image: "https://hips.hearstapps.com/hmg-prod/images/delish-how-to-make-a-smoothie-horizontal-1542310071.png"
     },      
