@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import { View, Text, SafeAreaView, ScrollView, StyleSheet } from 'react-native';
+import { View, SafeAreaView, ScrollView, StyleSheet } from 'react-native';
 import { Divider } from 'react-native-elements';
-import BottomTabs from '../components/home/BottomTabs';
 import Categories from '../components/home/Categories';
 import HeaderTabs from '../components/home/HeaderTabs';
 import RestaurantItems, { localRestaurants } from '../components/home/RestaurantItems';

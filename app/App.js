@@ -5,8 +5,6 @@ import { View, Text, Image } from "react-native";
 import AppIntroSlider from "react-native-app-intro-slider";
 import { COLORS, SIZES } from './assets/constants/theme';
 
-import Information from "./screens/Information";
-
 const slides = [
   {
     id: 1,
