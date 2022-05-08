@@ -20,25 +20,6 @@ export default function Info() {
     );
 }
 
-const Learn = (props) => (
-    <View style={{ width: 240, justifyContent: 'space-evenly' }}>
-        <Text style={styles.titleStyle}>{props.summary.title}</Text>
-        <Text>{props.summary.description}</Text>
-    </View>
-);
-
-const InfoImage = (props) => (
-    <View style= {{
-        flexDirection: "row",
-        justifyContent: "space-between",
-    }}>
-        <Image 
-            source={{ uri: props.summary.image }} 
-            style= {{ width:120, height: 100, borderRadius: 8}}
-        />
-    </View>
-);
-
 const styles = StyleSheet.create({
     text: {
         color: 'black'
