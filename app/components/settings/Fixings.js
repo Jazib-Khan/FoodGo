@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 
 export default function Info() {
@@ -14,8 +14,8 @@ export default function Info() {
                     theme: theme === "Light" ? "Dark" : "Light"
                 },
             });
-        }}>
-            <Text style={[styles.text, styles[`text${theme}`]]}>Switch Theme</Text>
+        }} style={styles.buttonContainer}>
+            <Text style={[styles.buttonText, styles[`buttonText${theme}`]]}>Switch Theme</Text>
         </TouchableOpacity>
     );
 }
@@ -25,6 +25,24 @@ const styles = StyleSheet.create({
         color: 'black'
     },
     textDark: {
+        color: 'white'
+    },
+    buttonContainer: {
+        elevation: 8,
+        backgroundColor: "green",
+        borderRadius: 10,
+        paddingVertical: 10,
+        paddingHorizontal: 12
+    },
+    buttonText: {
+        fontSize: 18,
+        color: "#fff",
+        fontWeight: "bold",
+        alignSelf: "center",
+        textTransform: "uppercase",
+        color: 'black'
+    },
+    buttonTextDark: {
         color: 'white'
     }
 });
