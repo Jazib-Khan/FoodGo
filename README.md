@@ -1,8 +1,6 @@
 # Food Go
 
-Food go is a mobile app that allows food sharing from major restaurants and takeaways for users who need or wish to consume food at cheaper to no costs compared to current market prices. The aim of this project is to help reduce food wastages that in regular store guideline circumstances go to waste. This is done by means of stores, restaurants and takeaways registering perfectly edible food products that they would otherwise throw to waste.
-
-The need for the application is one that looks out for society’s needs as it’s been estimated that we produce enough food to feed the world’s population several times over. Yet millions of tonnes of food are destroyed every year, in order to keep market prices high whilst over millions of people starve to death per year as they cannot afford to buy food.
+In my final year I developed an app designed to target the ongoing issue of food crisis more specifically food waste. The app is intended for consumers to purchase food at more affordable prices and thus will be preventing items that would otherwise be thrown to waste. Users can view local food items by entering their location within the app, a google location API fetches the input location and yelp's API gathers restaurant data from the location and then displays restaurants in the area. Restaurant owners can insert their food items, images, prices onto the app that’s then inserted into the database. Users also have the opportunity to filter what items can be delivered or picked up and the API filters options between food items that are available for pickup or delivery to be displayed on the front-end.
 
 ## Youtube video
 https://youtu.be/erep3NSWdEg
